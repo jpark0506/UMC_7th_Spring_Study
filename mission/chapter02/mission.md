@@ -20,7 +20,7 @@ FROM
 WHERE
     um.userid = <userid> AND
     (um.status = 'PENDING' OR um.status = 'SUCCESS')
-ORDER BY um.startdate, m.id, um.userid;
+ORDER BY um.startdate DESC, m.id, um.userid;
 LIMIT <limit_value> OFFSET <offset_value>;
 -- CURSOR 기반 --
 SELECT
@@ -41,7 +41,7 @@ WHERE
         (um.startdate = '<last_startdate>' AND m.id > <last_mission_id>) OR
         (um.startdate = '<last_startdate>' AND m.id = <last_mission_id> AND um.userid > <last_userid>)
     )
-ORDER BY um.startdate, m.id, um.userid
+ORDER BY um.startdate DESC, m.id, um.userid
 LIMIT <limit_value>;
 ```
 
@@ -90,7 +90,7 @@ SELECT
 FROM
     mission m
     JOIN store s ON m.store_id = s.id
-    LEFTJOIN usermission um ON m.id = um.missionid
+    LEFT JOIN usermission um ON m.id = um.missionid
 WHERE
     um.userid = NULL AND
     s.regionid = <regionid>
@@ -114,7 +114,7 @@ SELECT
 	p.point,
 FROM
 	user u
-	JOIN point p ON u.id = p.id
+	JOIN point p ON u.id = p.userid
 WHERE
 	u.id = <userid>
 ORDER BY p.id
