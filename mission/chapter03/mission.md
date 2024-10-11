@@ -37,7 +37,7 @@
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **API Endpoint**   | `POST` /review                                                                                                                                                                             |
 | **Request Body**   | `{`<br>&emsp;`"store_id": ${store_id},`<br>&emsp;`"mission_id": ${mission_id},`<br>&emsp;`"score": ${review_score},`<br>&emsp;`"content": "내용",`<br>&emsp;`"image": ["imageUrl"]`<br>`}` |
-| **Request Header** | `Authorization`: accessToken (String)                                                                                                                                                      |
+| **Request Header** | `Authorization`: accessToken (String)<br>`Content-Type`: application/json                                                                                                                  |
 | **Query String**   | 필요 없음                                                                                                                                                                                  |
 
 ## 나의 미션 목록 조회
@@ -54,9 +54,16 @@
 
 ## 미션 성공 요청
 
-| 항목               | 내용                                |
-| ------------------ | ----------------------------------- |
-| **API Endpoint**   | `PATCH` /mission                    |
-| **Request Body**   | { "missionStatus": ${STATUS_TYPE} } |
-| **Request Header** | Authorization: accessToken (String) |
-| **Query String**   | 필요 없음                           |
+| 항목               | 내용                                                                      |
+| ------------------ | ------------------------------------------------------------------------- |
+| **API Endpoint**   | `PATCH` /mission                                                          |
+| **Request Body**   | { "missionStatus": ${STATUS_TYPE} }                                       |
+| **Request Header** | `Authorization`: accessToken (String)<br>`Content-Type`: application/json |
+| **Query String**   | 필요 없음                                                                 |
+
+| 항목               | 내용                                                                                                                                                                                                                                                             |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **API Endpoint**   | `POST` /users/signup                                                                                                                                                                                                                                             |
+| **Request Body**   | `{`<br>`"id": 1,`<br>`"name": "홍길동",`<br>`"gender": 1,`<br>`"birthdate": "1995-06-15",`<br>`"address": "서울특별시 강남구",`<br>`"likedFood": "김치찌개",`<br>`"nickname": "길동이",`<br>`"email": "hong@gmail.com",`<br>`"phonenum": "010-1234-5678"`<br>`}` |
+| **Request Header** | `Content-Type`: application/json                                                                                                                                                                                                                                 |
+| **Query String**   | 필요 없음                                                                                                                                                                                                                                                        |
